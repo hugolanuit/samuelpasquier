@@ -1,0 +1,101 @@
+@mixin ticker($duration: 30s, $direction: normal) {
+  animation-name: ticker;
+  animation-duration: $duration;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-direction: $direction;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+@function duration($frames: 1) {
+  @return #{strip-unit($frames / 30)}s;
+}
+
+@mixin inView() {
+  html.has-scroll-init &[data-scroll] {
+    @content;
+  }
+}
+
+@mixin fadeInStart(){
+  opacity: 0.001;
+}
+
+@mixin fadeInEnd($duration: 450ms, $delay: 0ms){
+  opacity: 0.999;
+  transition: opacity $duration $delay linear;
+}
+
+@mixin blurInStart(){
+  filter: blur(0px);
+  transition: filter 250ms linear;
+}
+
+@mixin fadeBlurOutStart($value: 5px){
+  opacity: 0.0001;
+  filter: blur($value);
+  transition: filter 250ms linear;
+}
+
+@mixin blurIn($value: 5px){
+  filter: blur($value);
+}
+
+@mixin fadeBlurOut(){
+  opacity: 0.9999;
+  filter: blur(0);
+}
+
+@mixin slideFadeUpInitial($y: 60px) {
+  transform: translate3d(0,$y,0);
+  opacity: 0.001;
+}
+
+@mixin slideFadeUp($duration: 850ms) {
+  transform: translate3d(0,0,0);
+  opacity: 0.999;
+  transition: transform $duration $easeOutCubic, opacity 450ms linear;
+}
+
+@mixin animateFadeBlurOut(){
+  animation: fadeBlurOut 850ms linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@mixin animateBlurInOut(){
+  animation: blurInOut 1.5s linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeBlurOut {
+  0% {
+    opacity: 0.0001;
+    filter: blur(5px);
+  }
+  60% {
+    opacity: 0.9999;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 0.9999;
+    filter: blur(0);
+  }
+}
+
+@keyframes blurInOut {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(10px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+
+

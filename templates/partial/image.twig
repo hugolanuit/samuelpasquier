@@ -1,0 +1,26 @@
+{% if image or src %}
+
+  {# replace Timber/Image() with our class extenxion Timber/Mill3Image #}
+  {% set image = Mill3Image(image) %}
+
+  {% set src = src|default(null) %}
+  {% set alt = alt|default('') %}
+  {% set lazyload = lazyload|default(false) %}
+  {% set attributes = attributes|default([]) %}
+  {% set size = size|default('large') %}
+  {% set width = image.sizes[size].width|default((image.sizes|first).width) %}
+  {% set height = image.sizes[size].height|default((image.sizes|first).height) %}
+
+  <img
+    src="{{ src ? src : image.src(size) }}"
+    srcset="{{ image.srcset }}"
+    sizes="{{ image.img_sizes }}"
+    alt="{{ image.alt|default(alt) }}"
+    width="{{ width }}"
+    height="{{ height }}"
+    {% if lazyload %}loading="lazy"{% endif %}
+    class="{{ classname }}"
+    {{ attributes|join(' ') }}
+  >
+
+{% endif %}

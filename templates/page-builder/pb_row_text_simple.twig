@@ -1,0 +1,27 @@
+{% extends 'page-builder/pb_row_wrapper.twig' %}
+
+{% set classname = classname|default('') %}
+{% set attributes = attributes|default([]) %}
+
+{% set title = post.title %}
+{% set text = post.text %}
+{% set position = post.position|default('center') %}
+{% set width = post.width|default('default') %}
+{% set buttons = post.buttons|default([]) %}
+
+{% block row_wrapper %}
+<div
+  class="pb-row pb-row-text-simple container-fluid --position-{{ position }} --width-{{ width }} {{ classname }} tt-uppercase fz-12"
+  {{ attributes|join(' ') }}
+  data-scroll
+  data-scroll-offset="20%,0"
+>
+  {% if title %}
+  <h1 class="pb-row-text-simple__title m-0 p-0 ff-body fz-24 fz-md-40 fw-400 mt-0 mb-3">{{ title }}</h1>
+  {% endif %}
+
+  <div class="pb-row-text-simple__body wysiwyg">
+    {{ text }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'page-builder/pb_row_wrapper.twig' %}
+
+{% set classname = classname|default('') %}
+{% set attributes = attributes|default([]) %}
+{% set slides = post.slides|default([]) %}
+
+{% set full_height = post.full_height ?? true %}
+{% set format = post.format|default('portrait') %}
+
+
+{% block row_wrapper %}
+<section
+  class="pb-row pb-row-slider d-flex flex-column justify-content-center {{ classname|join(' ') }}{% if full_height %} --full-height{% endif %}"
+  {{ attributes|join(' ') }}
+  data-module="pb-row-slider"
+  data-pb-row-slider
+>
+  <div class="pb-row-slider__slider swiper-container w-100"
+  data-scroll 
+  data-scroll-offset="100px,0"
+  >
+    <div class="swiper-wrapper">
+      {% for slide in slides %}
+        {% set slideFormat = format %}
+        {% if slide.format and slide.format != 'default' %}
+          {% set slideFormat = slide.format %}
+        {% endif %}
+        <div class="swiper-slide pb-row-slider__slide d-flex align-items-center justify-content-center" style="--index:{{ loop.index0 }}">
+
+          {% if slide.link %}<a href="{{ slide.link.url }}" class="td-none d-block w-100 w-lg-auto">{% endif %}
+            <div class="position-relative pb-row-slider__slide__imgBox box box-{{ slideFormat }}">
+              {% include 'partial/image.twig' with {
+                'image': slide.image,
+                'size': 'largest_retina',
+                'classname': 'pb-row-slider__slide__img image-as-background'
+              } only %}
+            </div>
+          {% if slide.link %}</a>{% endif %}
+          
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% set posts = posts %}
+{% block content %}
+<section class="project-archives py-2 py-lg-4"
+data-module="project-archive"
+data-project-archive
+>
+
+  <div class="project-archives__posts container-fluid bg-color-white" data-scroll-section>
+
+    <ol class="list-none m-0 p-0 d-grid grid-gap-5 grid-gap-md-3">
+        {% for post in posts %}
+        <li>
+          {% include 'post-type/project/project-preview.twig' with {'post': post, 'classname': 'project-archives__project', attributes: ['style="--index:'~ loop.index0 ~';"'] } only %}
+        </li>
+      {% endfor %}
+    </ol>
+
+  </div>
+
+  {% include 'partial/pagination.twig' with {
+    'pagination': posts.pagination({show_all: false, mid_size: 1, end_size: 1}),
+    'classname': 'project-archives__pagination pt-4 pt-lg-8',
+    'attributes': ['data-scroll-section']
+  } only %}
+
+
+</section>
+
+
+{% endblock %}

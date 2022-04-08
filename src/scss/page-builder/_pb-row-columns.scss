@@ -1,0 +1,50 @@
+.pb-row-columns {
+  $self: &;
+
+  @include media-breakpoint-up(sm) { 
+    padding-right: 190px;
+  }
+
+  @include media-breakpoint-up(xxl) { 
+    max-width: 1600px;
+    padding-right: 500px;
+  }
+
+  &__grid {
+
+    @include media-breakpoint-up(md) { 
+      grid-template-columns: .5fr .5fr 2.5fr;
+      grid-gap: spacer(4) spacer(6);
+    }
+
+    @include media-breakpoint-up(lg) { 
+      grid-gap: spacer(4) 125px;
+    }
+  }
+
+  &__col {
+    @include media-breakpoint-up(md) { 
+      &.--span-2 {
+        grid-column: span 2;
+      }
+
+      &.--span-3 {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  // IN-VIEW ANIMATIONS
+  @include inView {
+    #{$self}__col {
+      @include fadeInStart;
+    }
+
+    &.is-inview {
+      #{$self}__col {
+        @include fadeInEnd(450ms);
+        transition-delay: calc(var(--index) * 100ms);
+      }
+    }
+  }
+}

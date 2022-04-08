@@ -1,0 +1,28 @@
+{% extends 'page-builder/pb_row_wrapper.twig' %}
+
+{% set classname = classname|default('') %}
+{% set attributes = attributes|default([]) %}
+
+{% set columns = post.columns|default([]) %}
+{% set position = post.position|default('center') %}
+{% set width = post.width|default('default') %}
+{% set buttons = post.buttons|default([]) %}
+
+{% block row_wrapper %}
+<div
+  class="pb-row pb-row-columns container-fluid {{ classname }} tt-uppercase fz-12"
+  {{ attributes|join(' ') }}
+  data-scroll
+  data-scroll-offset="20%,0"
+>
+  <div class="pb-row-columns__grid d-grid grid-column-md-3 grid-gap-3">
+    {% for column in columns %}
+    <aside class="pb-row-columns__col --span-{{ column.row_span }}" style="--index: {{ loop.index0 }}">
+        <div class="pb-row-columns__body wysiwyg">
+          {{ column.text }}
+        </div>
+    </aside>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

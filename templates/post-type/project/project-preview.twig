@@ -1,0 +1,42 @@
+{% if post %}
+
+{% set classname = classname|default('') %}
+{% set attributes = attributes|default([]) %}
+
+{% set title = post.title %}
+{% set link = post.link %}
+{% set project_date = post.project_date %}
+{% set photo_count = post.photo_count %}
+{% set excerpt = post.post_excerpt %}
+{% set thumbnail_format = post.thumbnail_format|default('portrait') %}
+{% set thumbnail = post.thumbnail|default(null) %}
+
+<article 
+class="project-preview {{ classname }} tt-uppercase fz-12"
+data-scroll
+data-scroll-offset="20%,0"
+{{ attributes|join(" ") }}
+>
+  <a href="{{ link }}" title="{{ title }}" class="project-preview__link td-none d-block">
+      {% if thumbnail %}
+        <div class="project-preview__imgWrap position-relative mb-3 mb-md-0" data-scroll data-scroll-sticky data-scroll-target="main">
+          <div class="project-preview__img box box-{{thumbnail_format}} position-relative">
+            {% include 'partial/image.twig' with {'image': thumbnail, 'alt': title, 'size': 'largest_retina', 'classname': 'image-as-background'} only %}
+          </div>
+        </div>
+        
+      {% endif %}
+      <div class="project-preview__content position-relative z-2000 d-grid grid-column-lg-4 grid-gap-2 mt-3 mt-md-0">
+        <h3 class="project-preview__title m-0 p-0 ff-body fz-12 fw-400">
+          {{ title }} <span aria-hidden="true">/</span>
+        </h3>
+
+       <time class="project-preview__date">{{ project_date }} <span aria-hidden="true">/</span></time>
+       <p class="project-preview__count m-0">{% if photo_count < 10 %}0{% endif %}{{ photo_count }} photos <span aria-hidden="true">/</span></p>
+       <p class="project-preview__excerpt m-0">{{ excerpt }}</p>
+      </div>
+      
+ </a>
+</article>
+
+{% endif %}

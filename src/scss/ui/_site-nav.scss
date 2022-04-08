@@ -1,0 +1,82 @@
+.site-nav {
+  $self: &;
+
+  // color: white;
+  // mix-blend-mode: difference;
+
+
+  @include media-breakpoint-up(md) { 
+    color: white;
+    mix-blend-mode: difference;
+  }
+
+  a {
+    text-decoration: none;
+    pointer-events: all;
+    padding: 6px;
+
+    @include blurInStart;
+
+    @include hoverDevice {
+      &:hover {
+        @include blurIn;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) { 
+    bottom: auto;
+    top: 0;
+    height: calc(100 * var(--vh));
+
+    a {
+      opacity: 0.0001;
+      filter: blur(5px);
+      transition: opacity 450ms linear, filter 450ms linear;
+    }
+
+    // pointer-events: none;
+
+    a {
+      pointer-events: none;
+    }
+
+    body.--js-site-nav-opened & {
+      // pointer-events: all;
+
+      #{$self}__bg {
+        opacity: 1.0001;
+        transition-delay: 0ms;
+      }
+
+      a {
+        pointer-events: all;
+        opacity: 1.0001;
+        filter: blur(0px);
+        transition-delay: calc(var(--index) * 100ms + 450ms);
+      }
+    }
+
+    #{$self}__menu {
+      height: 100%;
+      align-items: center;
+      color: white;
+      mix-blend-mode: difference;
+
+      > li + li {
+        margin-top: spacer(3);
+      }
+
+    }
+
+    &__bg {
+      opacity: 0.0001;
+      transition: opacity 450ms linear;
+      transition-delay: 750ms;
+    }
+  }
+
+  &__menu {
+
+  }
+}

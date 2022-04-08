@@ -1,0 +1,11 @@
+.c-scrollbar {
+  &_thumb {
+    background-color: currentColor;
+  }
+
+  html.--js-barba &,
+  html.--js-scroll-disabled & {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+}

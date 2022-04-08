@@ -1,0 +1,63 @@
+{% extends is_shortcode ? 'shortcode/pb_wrapper.twig' : 'page-builder/pb_row_wrapper.twig' %}
+
+{% set index = index|default('pb-row-medias-' ~ random(1, 10000)) %}
+{% set classname = classname|default('') %}
+{% set attributes = attributes|default([]) %}
+
+{% set medias = post.medias %}
+{% set layout = post.layout|default('grid-1') %}
+{% set format = post.format|default('square') %}
+{% set ticker_direction = post.ticker_direction|default('left') %}
+{% set grid_gap = post.grid_gap|default(3) %}
+{% set fullwidth = post.fullwidth|default(false) %}
+
+{% set classname = classname ~ ' --layout-' ~ layout %}
+
+{% block row_wrapper %}
+{% if medias %}
+
+<div
+  id="{{ index }}"
+  class="pb-row pb-row-medias {{ classname }}"
+  {% if layout in ['slider', 'ticker', 'grid'] %}
+  data-scroll
+  data-scroll-offset="100px,0"
+  {% endif %}
+  {{ attributes|join(' ') }}
+>
+  <div class="pb-row-medias__grid d-grid grid-gap-{{ grid_gap }} {% if fullwidth %}--fullwidth{% endif %} align-items-center">
+    {% for media in medias if media.image %}
+    {% set image = Image(media.image) %}
+    {% set mediaFormat = format %}
+    {% if media.format and media.format != 'default' %}
+      {% set mediaFormat = media.format %}
+    {% endif %}
+    <div 
+      class="pb-row-medias__media"
+      data-scroll
+      data-scroll-offset="100px,0"
+      {% if media.speed != 0 %}
+        data-scroll-speed="{{ media.speed }}"
+      {% endif %}
+      style="--index:{{ loop.index0 }};"
+    >
+      <figure 
+        id="{{ index ~ '_' ~ loop.index }}"
+        class="pb-row-medias__box box box-{{ mediaFormat }} overflow-hidden"
+      >
+          {% include 'partial/image.twig' with {
+            'image': image,
+            'size': 'largest_retina',
+            'classname': 'pb-row-medias__img image-as-background'
+          } only %}
+
+      </figure>
+      {% if media.credit %}
+        <figcaption class="pb-row-medias__caption d-block m-0 p-0">{{ media.credit }}</figcaption>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}  
+{% endblock %}

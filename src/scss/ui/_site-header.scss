@@ -1,0 +1,64 @@
+.site-header {
+  $self: &;
+
+  color: white;
+  mix-blend-mode: difference;
+
+  &__logo {
+    svg {
+      width: auto;
+      height: 23px;
+
+      @include media-breakpoint-up(md) { 
+        height: 42px;
+      }
+    }
+
+    @include blurInStart;
+
+    @include hoverDevice {
+      &:hover {
+        @include blurIn;
+      }
+    }
+  }
+
+  &__spacer {
+    height: 0;
+  }
+
+  &__burger {
+    margin-top: -1px;
+    width: 30px;
+    height: 12px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -75%;
+      left: -50%;
+      width: 200%;
+      height: 250%;
+    }
+
+    hr {
+      margin: 0;
+      transition: transform 450ms $easeInOutCubic;
+    }
+
+    > span {
+      transition: transform 650ms $easeInOutCubic;
+    }
+
+    body.--js-site-nav-opened & {
+      > span {
+        &:first-child {
+          transform: translateY(6px) rotate(135deg);
+        }
+        &:last-child {
+          transform: translateY(-6px) rotate(225deg);
+        }
+      }
+    }
+  }
+}

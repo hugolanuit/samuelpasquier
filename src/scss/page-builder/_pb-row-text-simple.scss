@@ -1,0 +1,84 @@
+.pb-row-text-simple {
+  $self: &;
+  --delay: 0ms;
+
+  *:nth-child(1) {
+    --delay: 0ms;
+  }
+
+  *:nth-child(2) {
+    --delay: 100ms;
+  }
+
+  // POSITION
+  &.--position-center {
+    #{$self}__title,
+    #{$self}__body,
+    #{$self}__links {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &.--position-right {
+    #{$self}__title,
+    #{$self}__body,
+    #{$self}__links {
+      margin-left: auto;
+    }
+  }
+
+  // WIDTH
+  &.--width-small {
+    #{$self}__title,
+    #{$self}__body,
+    #{$self}__links {
+      @include media-breakpoint-up(md) {
+        width: 520px;
+      }
+    }
+  }
+  &.--width-medium {
+    #{$self}__title,
+    #{$self}__body,
+    #{$self}__links {
+      @include media-breakpoint-up(md) {
+        width: 620px;
+      }
+    }
+  }
+  &.--width-default {
+    #{$self}__title,
+    #{$self}__body,
+    #{$self}__links {
+      @include media-breakpoint-up(md) {
+        width: 720px;
+      }
+    }
+  }
+  &.--width-large {
+    #{$self}__title,
+    #{$self}__body,
+    #{$self}__links {
+      @include media-breakpoint-up(lg) {
+        width: 920px;
+      }
+    }
+  }
+
+
+  // IN-VIEW ANIMATIONS
+  @include inView {
+    #{$self}__title, 
+    #{$self}__body {
+      @include fadeInStart;
+    }
+
+    &.is-inview {
+      #{$self}__title, 
+      #{$self}__body {
+        @include fadeInEnd(450ms);
+        transition-delay: var(--delay);
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+html {
+  --vh: 1vh;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html:not(.has-scroll-init) body,
+html.--js-barba body,
+body.--scroll-disabled {
+  overflow: hidden;
+}
+
+body.--js-site-nav-opened,
+body.--js-site-search-opened {
+  overflow: hidden;
+}

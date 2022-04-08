@@ -1,0 +1,163 @@
+.project-preview {
+  $self: &;
+
+  --index: 0;
+
+  // max-width: 530px;
+  @include media-breakpoint-up(md) { 
+    padding-right: 190px;
+  }
+
+  @include media-breakpoint-up(xxl) { 
+    max-width: 1600px;
+    padding-right: 500px;
+  }
+
+  &__title {
+    --delay: 100ms;
+
+    @include media-breakpoint-between(sm, md) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    @include media-breakpoint-up(md) { 
+      --delay: 0ms;
+    }
+  }
+  &__date {
+    --delay: 200ms;
+
+    @include media-breakpoint-between(sm, md) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    @include media-breakpoint-up(md) { 
+      --delay: 100ms;
+    }
+  }
+  &__count {
+    --delay: 300ms;
+
+    @include media-breakpoint-between(sm, md) {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    @include media-breakpoint-up(md) { 
+      --delay: 200ms;
+    }
+  } 
+  &__excerpt {
+    --delay: 400ms;
+
+    @include media-breakpoint-between(sm, md) {
+      grid-column: 2;
+      grid-row: 1 / span 4;
+    }
+
+    @include media-breakpoint-up(md) { 
+      --delay: 300ms;
+    }
+  }
+
+  &__content {
+    color: white;
+    mix-blend-mode: difference;
+
+    @include media-breakpoint-between(sm, md) {
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: 200px 120px 120px 1fr;
+    }
+    
+  }
+
+  &__imgWrap {
+    --delay: 0ms;
+
+    @include media-breakpoint-down(sm) { 
+      transform: none !important;
+
+    }
+
+    @include media-breakpoint-up(md) { 
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+
+      display: flex;
+      padding: spacer(4);
+      align-items: flex-end;
+      justify-content: flex-end;
+      pointer-events: none;
+
+      @include fadeInStart;
+      transition: opacity 450ms linear;
+    }
+
+    @include media-breakpoint-up(lg) { 
+      padding: spacer(6) spacer(3);
+    }
+  }
+
+  &__img {
+    @include media-breakpoint-up(md) { 
+      width: 40vw;
+
+      &.box-landscape, &.box-square, &.box-postal-card, &.box-half-square, &.box-widescreen {
+        width: 60vw;
+      }
+    }
+
+    @include media-breakpoint-up(lg) { 
+      width: 30vw;
+      min-width: 600px;
+
+      &.box-landscape, &.box-square, &.box-postal-card, &.box-half-square, &.box-widescreen {
+        width: 40vw;
+        min-width: 800px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) { 
+    &.--opened {
+      #{$self}__imgWrap {
+        @include fadeInEnd;
+        transition-delay: 450ms;
+      }
+    }
+  }
+
+  @include inView {
+    @include media-breakpoint-down(sm) { 
+      #{$self}__imgWrap {
+        @include fadeInStart;
+      }
+    }
+    #{$self}__title, #{$self}__date, #{$self}__count, #{$self}__excerpt {
+      @include fadeInStart;
+    }
+    
+    &.is-inview {
+      @include media-breakpoint-down(sm) { 
+        #{$self}__imgWrap {
+          @include fadeInEnd;
+        }
+      }
+
+      #{$self}__title, #{$self}__date, #{$self}__count, #{$self}__excerpt {
+        @include fadeInEnd;
+        transition-delay: var(--delay);
+      }
+    }
+  }
+}
+

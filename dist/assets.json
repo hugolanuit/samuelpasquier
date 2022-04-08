@@ -1,0 +1,53 @@
+{
+  "app": {
+    "js": "/wp-content/themes/samuelpasquier/dist/js/app.0a6efaace5c552bd81f5.bundle.js"
+  },
+  "style": {
+    "css": "/wp-content/themes/samuelpasquier/dist/css/style.css?hash=884cf6782e9659a718c3",
+    "js": "/wp-content/themes/samuelpasquier/dist/js/style.884cf6782e9659a718c3.bundle.js"
+  },
+  "editor-style": {
+    "css": "/wp-content/themes/samuelpasquier/dist/css/editor-style.css?hash=0e8f1dc515295bf1da17",
+    "js": "/wp-content/themes/samuelpasquier/dist/js/editor-style.0e8f1dc515295bf1da17.bundle.js"
+  },
+  "acfPreview": {
+    "css": "/wp-content/themes/samuelpasquier/dist/css/acfPreview.css?hash=7c77cc66ef5a2d173e75",
+    "js": "/wp-content/themes/samuelpasquier/dist/js/acfPreview.7c77cc66ef5a2d173e75.bundle.js"
+  },
+  "acfPreviewIframe": {
+    "js": "/wp-content/themes/samuelpasquier/dist/js/acfPreviewIframe.7d566bf87031224fac5f.bundle.js"
+  },
+  "": {
+    "js": [
+      "/wp-content/themes/samuelpasquier/dist/js/vendors-node_modules_swiper_esm_components_core_core-class_js.47fc30fb1f3c2204937a.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/vendors-node_modules_locomotive-scroll_dist_locomotive-scroll_esm_js.bdc6e41cfbd15102aa05.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/vendors-node_modules_axios_index_js-node_modules_form-serialize_index_js.7fbfc5ad53ddd9c05724.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/vendors-node_modules_vimeo_player_dist_player_es_js.987a7df29ae8960af572.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_pb-row-oembed_index_js.992de9d9d7fa21856f61.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_pb-row-testimonials_index_js.dc02c369d1bd1aa45af6.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_pb-row-slider_index_js.8b36339525bdf8b8835b.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_gform_index_js.bb3a11a09455adca237a.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_text-ticker_index_js.7cabe8ced22c9e6db31a.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_accordions_index_js.f4dff7719d8d36c89e92.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_pb-row-tabs_index_js.9a6ca2883ae7c6582083.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_pb-row-medias_index_js.08d6b2fc3f1e8d25a3c9.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_newsletter_index_js.dd724beddb2ffd875fdc.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_filtered-posts-list_index_js.45fbd99dc1989e37c473.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_project-archive_index_js.71b550f9b43c36c9c1a0.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_video_index_js.394d1ebaa397194416bc.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_site-scroll_index_js.18da7212fcdb4961f972.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_svg-path-length_index_js.fc80a939b7d8793cc0cc.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_sharing_index_js.14f7f7d7438a027272e9.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_locomotive-scroll-facebook_index_js.34b1a9d3377374da3c94.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_google-map_index_js.2a48ce03f0074e418021.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_scroll-timeline_index_js.5a70beec8db829c1ae9d.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_locomotive-scroll-youtube_index_js.b8eba48c9f380a4b1023.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_locomotive-scroll-vimeo_index_js.9a6b176d256e12b8e168.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_text-animation_index_js.8942a2285683777e82a9.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_site-nav_index_js.7e27ae77e1edfe60c06e.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_body_index_js.88372a7a24355008fe29.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_ui_site-header_index_js.4f09dd0f16311bec66a2.bundle.js",
+      "/wp-content/themes/samuelpasquier/dist/js/src_js_modules_module_index.49d6a52ab61b8bae2382.bundle.js"
+    ]
+  }
+}

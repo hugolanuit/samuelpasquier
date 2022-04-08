@@ -1,0 +1,56 @@
+.pb-row-slider {
+  $self: &;
+
+  &.--full-height {
+    min-height: 100vh;
+
+    @include media-breakpoint-down(sm) { 
+      min-height: calc(100vh - 70px);
+    }
+
+    #{$self}__slider {
+      padding-top: 90px;
+      padding-bottom: 90px;
+    }
+  }
+
+
+  &__slide {
+    align-self: center;
+
+    &__imgBox {
+      width: 100%;
+
+      @include media-breakpoint-up(lg) {
+        width: 100vw;
+      }
+      
+      max-width: 450px;
+
+      &.box-landscape, &.box-square, &.box-postal-card, &.box-half-square, &.box-widescreen {
+        max-width: 600px;
+      }
+    }
+  }
+
+  &__slider {
+    @include inView {
+      #{$self}__slide {
+        --finalIndex: calc(var(--index) + 1);
+        @include slideFadeUpInitial(90px);
+
+        &.swiper-slide-duplicate {
+          --finalIndex: 0;
+        }
+      }
+      
+
+      &.is-inview {
+        #{$self}__slide {
+          @include slideFadeUp;
+          transition-delay: calc(var(--finalIndex) * 150ms);
+        }
+      }
+    }
+  }
+}

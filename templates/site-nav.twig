@@ -1,0 +1,15 @@
+<div
+  id="site-nav"
+  class="site-nav position-fixed z-4000 l-0 b-0 w-100 overflow-hidden pointer-events-none"
+  data-ui="site-nav"
+  data-site-nav
+> 
+  <div class="site-nav__bg position-absolute w-100 h-100 t-0 l-0 bg-color-black d-md-none"></div>
+  <div class="site-nav__scroller d-flex flex-md-column justify-content-center justify-content-md-start w-100 h-100 p-2 p-lg-4">
+  
+    <nav class="site-nav__wrap w-100 container-fluid" role="navigation">
+      {% include 'menu.twig' with { 'menu': menu, 'classname': 'site-nav__menu list-none m-0 p-0 d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center tt-uppercase fz-36 fz-md-20 fz-lg-40' } only %}
+    </nav>
+
+  </div>
+</div>

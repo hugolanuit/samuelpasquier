@@ -1,0 +1,37 @@
+<header
+  class="site-header position-fixed z-9000 t-0 l-0 w-100 vh-100 pointer-events-none overflow-hidden"
+  data-site-header
+  data-ui="site-header"
+>
+  <div class="site-header__wrap container-fluid pt-3 pt-lg-4 d-flex justify-content-between justify-content-md-end align-items-center w-100 fz-xs">
+
+    <figure class="site-header__logo m-0 p-0 pointer-events-all" role="banner">
+      <a
+        class="site-header__logoLink d-block w-100 color-current td-none"
+        href="{{ site.url }}"
+        rel="home"
+        title="{{ site.name }}"
+      >
+      <span class="d-none d-md-block d-xxl-none">{{ source('src/svg/logo-condensed.svg') }}</span>
+      <span class="d-block d-md-none d-xxl-block">{{ source('src/svg/logo.svg') }}</span>
+      </a>
+    </figure>
+
+    <div class="site-header__burgerWrap d-block d-md-none">
+      <button
+      class="site-header__burger position-relative color-current pointer-events-all d-block"
+        type="button"
+        aria-label="Menu"
+        aria-controls="site-nav"
+        aria-expanded="false"
+      >
+        <span class="d-block position-absolute t-0 l-0 w-100" aria-hidden="true" data-ignore-css-empty><hr></span>
+        <span class="d-block position-absolute t-100 l-0 w-100" aria-hidden="true" data-ignore-css-empty><hr></span>
+      </button>
+  </div>
+
+  </div>
+
+</header>
+
+<div class="site-header__spacer w-100 visibility-hidden" data-scroll-section aria-hidden="true"></div>

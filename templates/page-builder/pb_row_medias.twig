@@ -9,23 +9,36 @@
 {% set format = post.format|default('square') %}
 {% set ticker_direction = post.ticker_direction|default('left') %}
 {% set grid_gap = post.grid_gap|default(3) %}
-{% set fullwidth = post.fullwidth|default(false) %}
+{% set fullwidth = post.fullwidth ? true : false %}
+{% set lazyload = post.lazyload == false ? false : true %}
+{% set overlap = post.overlap|default('none') %}
+{% set overlap_type = post.overlap_type|default('half') %}
 
 {% set classname = classname ~ ' --layout-' ~ layout %}
+
+{% set media_width = 100 %}
+
+{% if layout == 'grid-2' %}
+  {% set media_width = 50 %}
+{% elseif layout == 'grid-3' %}
+  {% set media_width = 33 %}
+{% elseif layout == 'grid-4' %}
+  {% set media_width = 25 %}
+{% endif %}
 
 {% block row_wrapper %}
 {% if medias %}
 
 <div
   id="{{ index }}"
-  class="pb-row pb-row-medias {{ classname }}"
+  class="pb-row pb-row-medias {{ classname }}{% if overlap %} --overlap-{{ overlap }} --{{ overlap_type }}{% endif %}"
   {% if layout in ['slider', 'ticker', 'grid'] %}
   data-scroll
   data-scroll-offset="100px,0"
   {% endif %}
   {{ attributes|join(' ') }}
 >
-  <div class="pb-row-medias__grid d-grid grid-gap-{{ grid_gap }} {% if fullwidth %}--fullwidth{% endif %} align-items-center">
+  <div class="pb-row-medias__grid d-grid grid-gap-{{ grid_gap }}{% if fullwidth %} --fullwidth{% endif %} align-items-center">
     {% for media in medias if media.image %}
     {% set image = Image(media.image) %}
     {% set mediaFormat = format %}
@@ -33,28 +46,40 @@
       {% set mediaFormat = media.format %}
     {% endif %}
     <div 
-      class="pb-row-medias__media"
+      class="pb-row-medias__media align-self-{{ media.v_align }}"
       data-scroll
       data-scroll-offset="100px,0"
-      {% if media.speed != 0 %}
+      {% if media.speed != 0 and media.parallax_type == 'external' %}
         data-scroll-speed="{{ media.speed }}"
       {% endif %}
       style="--index:{{ loop.index0 }};"
     >
-      <figure 
-        id="{{ index ~ '_' ~ loop.index }}"
-        class="pb-row-medias__box box box-{{ mediaFormat }} overflow-hidden"
-      >
-          {% include 'partial/image.twig' with {
-            'image': image,
-            'size': 'largest_retina',
-            'classname': 'pb-row-medias__img image-as-background'
-          } only %}
+      <div class="pb-row-medias__mediaWrap --align-{{ media.h_align }}" style="{% if not media.full_width %}--max-width:{{ media.max_width }}%;{% endif %}--pt: {{ media.padding_top }}vw;--pb: {{ media.padding_bottom }}vw;">
+        <figure 
+          id="{{ index ~ '_' ~ loop.index }}"
+          class="pb-row-medias__box w-100 box box-{{ format }} overflow-hidden{% if media.custom_ratio %} --custom-ratio{% endif %}" style="{% if media.custom_ratio %}--ratio-width:{{ media.ratio_width }};--ratio-height:{{ media.ratio_height }};{% endif %}"
+        >
+          <div 
+            class="pb-row-medias__imgWrap{% if media.speed != 0 and media.parallax_type == 'internal' %} --parallax{% endif %} position-absolute t-0 b-0 l-0 w-100"
+            {% if media.speed != 0 and media.parallax_type == 'internal' %}
+              data-scroll
+              data-scroll-speed="{{ media.speed }}"
+              style="--parallax-speed:{{ media.speed }}"
+            {% endif %}
 
-      </figure>
-      {% if media.credit %}
-        <figcaption class="pb-row-medias__caption d-block m-0 p-0">{{ media.credit }}</figcaption>
-      {% endif %}
+          >
+            {% include 'partial/image.twig' with {
+              'image': image,
+              'sizes': [ '100vw', null, media_width ~ 'vw'],
+              'classname': 'pb-row-medias__img image-as-background',
+              'lazyload': lazyload
+            } only %}
+          </div>
+        </figure>
+        {% if media.credit %}
+          <figcaption class="pb-row-medias__caption d-block m-0 p-0">{{ media.credit }}</figcaption>
+        {% endif %}
+      </div>
     </div>
     {% endfor %}
   </div>

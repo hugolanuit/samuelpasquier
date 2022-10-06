@@ -35,7 +35,8 @@ function setup()
     add_image_size('small', 576);
     add_image_size('large', 1024);
     add_image_size('largest', 1800);
-    add_image_size('largest-retina', 2800);
+    add_image_size('large-retina', 2400);
+    add_image_size('largest-retina', 3600);
     add_image_size('full', '');
 
     // Enable HTML5 markup support

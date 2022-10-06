@@ -469,53 +469,40 @@
                                     "acfe_settings": ""
                                 },
                                 {
-                                    "key": "field_62444ea57e412",
-                                    "label": "Media format (specific)",
-                                    "name": "format",
-                                    "type": "select",
+                                    "key": "field_633f405f2983e",
+                                    "label": "Custom ratio?",
+                                    "name": "custom_ratio",
+                                    "type": "true_false",
                                     "instructions": "",
                                     "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633f3fba2983c",
+                                    "label": "Ratio (width)",
+                                    "name": "ratio_width",
+                                    "type": "number",
+                                    "instructions": "",
+                                    "required": 1,
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_601d52cd75214",
+                                                "field": "field_633f405f2983e",
                                                 "operator": "==",
-                                                "value": "grid-1"
-                                            }
-                                        ],
-                                        [
-                                            {
-                                                "field": "field_601d52cd75214",
-                                                "operator": "==",
-                                                "value": "grid-2"
-                                            }
-                                        ],
-                                        [
-                                            {
-                                                "field": "field_601d52cd75214",
-                                                "operator": "==",
-                                                "value": "grid-3"
-                                            }
-                                        ],
-                                        [
-                                            {
-                                                "field": "field_601d52cd75214",
-                                                "operator": "==",
-                                                "value": "grid-4"
-                                            }
-                                        ],
-                                        [
-                                            {
-                                                "field": "field_601d52cd75214",
-                                                "operator": "==",
-                                                "value": "grid-third"
-                                            }
-                                        ],
-                                        [
-                                            {
-                                                "field": "field_601d52cd75214",
-                                                "operator": "==",
-                                                "value": "grid-center"
+                                                "value": "1"
                                             }
                                         ]
                                     ],
@@ -525,25 +512,47 @@
                                         "id": ""
                                     },
                                     "acfe_permissions": "",
-                                    "choices": {
-                                        "default": "Default",
-                                        "portrait": "Portrait (3:4)",
-                                        "photography": "Portrait (4:6)",
-                                        "square": "Square (1:1)",
-                                        "landscape": "Landscape (4:3)",
-                                        "postal-card": "Landscape (6:4)",
-                                        "half-square": "Rectangular Landscape (2:1)",
-                                        "widescreen": "Panoramic (16:9)"
-                                    },
-                                    "default_value": "default",
-                                    "allow_null": 0,
-                                    "multiple": 0,
-                                    "ui": 0,
-                                    "return_format": "value",
+                                    "default_value": 1,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "min": 1,
+                                    "max": "",
+                                    "step": "",
                                     "acfe_settings": "",
-                                    "acfe_validate": "",
-                                    "ajax": 0,
-                                    "placeholder": ""
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633f40462983d",
+                                    "label": "Ratio (height)",
+                                    "name": "ratio_height",
+                                    "type": "number",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_633f405f2983e",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "default_value": 1,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "min": 1,
+                                    "max": "",
+                                    "step": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
                                 },
                                 {
                                     "key": "field_6243a13930707",
@@ -554,7 +563,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -565,6 +574,214 @@
                                     "step": "0.2",
                                     "prepend": "",
                                     "append": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633ef81050c8e",
+                                    "label": "Parallax Type",
+                                    "name": "parallax_type",
+                                    "type": "button_group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6243a13930707",
+                                                "operator": "!=",
+                                                "value": "0"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "choices": {
+                                        "external": "External",
+                                        "internal": "Internal"
+                                    },
+                                    "allow_null": 0,
+                                    "default_value": "external",
+                                    "layout": "horizontal",
+                                    "return_format": "value",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633ef85150c8f",
+                                    "label": "Vertical Alignment",
+                                    "name": "v_align",
+                                    "type": "button_group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "choices": {
+                                        "start": "Top",
+                                        "center": "Middle",
+                                        "end": "Bottom"
+                                    },
+                                    "allow_null": 0,
+                                    "default_value": "middle",
+                                    "layout": "horizontal",
+                                    "return_format": "value",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633f0899e3755",
+                                    "label": "Horizontal Alignment",
+                                    "name": "h_align",
+                                    "type": "button_group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_633ef89b50c90",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "choices": {
+                                        "left": "Left",
+                                        "center": "Center",
+                                        "right": "Right"
+                                    },
+                                    "allow_null": 0,
+                                    "default_value": "center",
+                                    "layout": "horizontal",
+                                    "return_format": "value",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633ef89b50c90",
+                                    "label": "Full width?",
+                                    "name": "full_width",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "message": "",
+                                    "default_value": 1,
+                                    "ui": 1,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633ef8ca50c91",
+                                    "label": "Max width",
+                                    "name": "max_width",
+                                    "type": "range",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_633ef89b50c90",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "default_value": 100,
+                                    "min": 10,
+                                    "max": 100,
+                                    "step": 1,
+                                    "prepend": "",
+                                    "append": "%",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633f4821c1456",
+                                    "label": "Padding Top",
+                                    "name": "padding_top",
+                                    "type": "range",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_633ef89b50c90",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "default_value": 0,
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 1,
+                                    "prepend": "",
+                                    "append": "%",
+                                    "acfe_settings": "",
+                                    "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_633f485cc1457",
+                                    "label": "Padding Bottom",
+                                    "name": "padding_bottom",
+                                    "type": "range",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_633ef89b50c90",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "default_value": 0,
+                                    "min": 0,
+                                    "max": 100,
+                                    "step": 1,
+                                    "prepend": "",
+                                    "append": "%",
                                     "acfe_settings": "",
                                     "acfe_validate": ""
                                 }
@@ -715,6 +932,83 @@
                             "acfe_validate": "",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_633f056e423a5",
+                            "label": "Overlap",
+                            "name": "overlap",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_601d52cd75214",
+                                        "operator": "==",
+                                        "value": "grid-2"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_permissions": "",
+                            "choices": {
+                                "none": "None",
+                                "left": "Left",
+                                "right": "Right",
+                                "both": "Both"
+                            },
+                            "allow_null": 0,
+                            "default_value": "none",
+                            "layout": "horizontal",
+                            "return_format": "value",
+                            "acfe_settings": "",
+                            "acfe_validate": ""
+                        },
+                        {
+                            "key": "field_633f0aa41790b",
+                            "label": "Overlap type",
+                            "name": "overlap_type",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_633f056e423a5",
+                                        "operator": "!=empty"
+                                    },
+                                    {
+                                        "field": "field_633f056e423a5",
+                                        "operator": "!=",
+                                        "value": "both"
+                                    },
+                                    {
+                                        "field": "field_601d52cd75214",
+                                        "operator": "==",
+                                        "value": "grid-2"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_permissions": "",
+                            "choices": {
+                                "half": "Half",
+                                "full": "Full"
+                            },
+                            "allow_null": 0,
+                            "default_value": "half",
+                            "layout": "horizontal",
+                            "return_format": "value",
+                            "acfe_settings": "",
+                            "acfe_validate": ""
                         },
                         {
                             "key": "field_61420c1e2342b",
@@ -881,6 +1175,28 @@
                             "acfe_permissions": "",
                             "message": "",
                             "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "acfe_settings": "",
+                            "acfe_validate": ""
+                        },
+                        {
+                            "key": "field_632a47da8a4d6",
+                            "label": "Lazyload",
+                            "name": "lazyload",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_permissions": "",
+                            "message": "",
+                            "default_value": 1,
                             "ui": 1,
                             "ui_on_text": "",
                             "ui_off_text": "",
@@ -1342,5 +1658,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1648644279
+    "modified": 1665092061
 }

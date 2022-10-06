@@ -3,27 +3,65 @@
   --index: 0;
 
   &__media {
+
+    &Wrap {
+      --max-width: 9999px;
+      --pt: 0%;
+      --pb: 0%;
+
+      @include media-breakpoint-up(md) {
+        max-width: var(--max-width);
+        padding-top: var(--pt);
+        padding-bottom: var(--pb);
+
+        &.--align-center, &.--align-right {
+          margin-left: auto;
+        }
+
+        &.--align-center, &.--align-left {
+          margin-right: auto;
+        }
+
+      } 
+
+    }
+
     @include media-breakpoint-down(sm) {
       transform: none !important;
     }
+
     @include inView {
-      #{$self}__box {
-        @include slideFadeUpInitial(90px);
+      #{$self}__imgWrap {
+        @include fadeInStart;
+      }
+
+      #{$self}__img {
+        transform: scale(1.2);
       }
       
 
       &.is-inview {
-        #{$self}__box {
-          @include slideFadeUp;
-          transition-delay: calc(var(--index) * 150ms);
+        #{$self}__imgWrap {
+          @include fadeInEnd(250ms);
+          transition-delay: calc(var(--index) * 200ms);
+        }
+
+        #{$self}__img {
+          transform: scale(1.001);
+          transition: transform 1050ms $easeOutQuad;
+          transition-delay: calc(var(--index) * 200ms);
         }
       }
     }
   }
-  &__parallax {
-    html.has-scroll-smooth & {
-      top: -6%;
-      bottom: -6%;
+
+  &__box {
+    background-color: white;
+
+    &.--custom-ratio {
+      &:before {
+        padding-top: calc((var(--ratio-width) / var(--ratio-height)) * 100%);
+      }
     }
   }
 
@@ -37,6 +75,17 @@
     @include media-breakpoint-up(lg) {
       padding-left: 40px;
       padding-right: 40px;
+    }
+  }
+
+  &__imgWrap {
+    &.--parallax {
+      --parallax-speed: 2;
+
+      html.has-scroll-smooth & {
+        top: -12px;
+        bottom: -12px;
+      }
     }
   }
 
@@ -99,6 +148,46 @@
     &.--layout-grid-2 {
       #{$self}__grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      &.--overlap-left.--half, &.--overlap-both {
+        #{$self}__media {
+          &:first-child {
+            margin-left: 50%;
+            margin-right: -50%;
+            z-index: 100;
+          }
+        }
+      }
+
+      &.--overlap-right.--half, &.--overlap-both {
+        #{$self}__media {
+          &:last-child {
+            margin-right: 50%;
+            margin-left: -50%;
+            z-index: 100;
+          }
+        }
+      }
+
+      &.--overlap-left.--full {
+        #{$self}__media {
+          &:first-child {
+            margin-left: 100%;
+            margin-right: -100%;
+            z-index: 100;
+          }
+        }
+      }
+
+      &.--overlap-right.--full {
+        #{$self}__media {
+          &:last-child {
+            margin-right: 100%;
+            margin-left: -100%;
+            z-index: 100;
+          }
+        }
       }
     }
 

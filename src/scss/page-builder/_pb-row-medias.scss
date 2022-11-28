@@ -10,16 +10,17 @@
       --pb: 0%;
 
       @include media-breakpoint-up(md) {
+
         max-width: var(--max-width);
         padding-top: var(--pt);
         padding-bottom: var(--pb);
 
-        &.--align-center, &.--align-right {
-          margin-left: auto;
-        }
-
         &.--align-center, &.--align-left {
           margin-right: auto;
+        }
+
+        &.--align-center, &.--align-right {
+          margin-left: auto;
         }
 
       } 

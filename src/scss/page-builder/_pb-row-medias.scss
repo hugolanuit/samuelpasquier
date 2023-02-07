@@ -37,6 +37,7 @@
       }
 
       #{$self}__img {
+        opacity: 0.0001;
         transform: scale(1.2);
       }
       
@@ -47,9 +48,10 @@
           transition-delay: calc(var(--index) * 200ms);
         }
 
-        #{$self}__img {
+        #{$self}__img.--loaded {
+          opacity: 1.0001;
           transform: scale(1.001);
-          transition: transform 1050ms $easeOutQuad;
+          transition: transform 1050ms $easeOutQuad, opacity 250ms linear;
           transition-delay: calc(var(--index) * 200ms);
         }
       }
@@ -80,6 +82,20 @@
   }
 
   &__imgWrap {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid color(color-white);
+      background-color: color(gray-300);
+
+      animation: fadeInOut 3s linear;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+    }
     &.--parallax {
       --parallax-speed: 2;
 

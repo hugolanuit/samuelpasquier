@@ -85,6 +85,7 @@
   }
 }
 
+
 @keyframes blurInOut {
   0% {
     filter: blur(0px);
@@ -94,6 +95,21 @@
   }
   100% {
     filter: blur(0px);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.0001;
+  }
+  33% {
+    opacity: 0.9999;
+  }
+  66% {
+    opacity: 0.9999;
+  }
+  100% {
+    opacity: 0.0001;
   }
 }
 

@@ -1,6 +1,7 @@
 import SwiperCore, { Swiper, Navigation } from 'swiper';
 
-import { $ } from "@utils/dom";
+import { $, $$ } from "@utils/dom";
+import { on, off } from "@utils/listener";
 
 // configure Swiper to use modules
 SwiperCore.use([Navigation]);
@@ -34,11 +35,17 @@ class PbRowMedias {
     this.el = el;
     this.slider = $(".pb-row-medias__slider", this.el);
 
+    this.imgs = [ ...$$('.pb-row-medias__img', this.el) ];
+
+    this._loadImg = this._loadImg.bind(this);
+
     this.init();
   }
 
   init() {
     if( this.slider ) this.swiper = new Swiper(this.slider, SWIPER_OPTIONS);
+
+    this._initImgs();
 
     this._bindEvents();
   }
@@ -52,8 +59,25 @@ class PbRowMedias {
     this.swiper = null;
   }
 
-  _bindEvents() {}
-  _unbindEvents() {}
+  _bindEvents() {
+    if (this.imgs) on(this.imgs, "load", this._loadImg);
+  }
+  _unbindEvents() {
+    if (this.imgs) off(this.imgs, "load", this._loadImg);
+  }
+
+  _loadImg(event){
+    event.currentTarget.classList.add('--loaded');
+  }
+
+  _initImgs(){
+    this.imgs.forEach((img) => {
+      if (img.complete) {
+        img.classList.add('--loaded');
+      }
+    });
+  }
+
 }
 
 export default PbRowMedias;

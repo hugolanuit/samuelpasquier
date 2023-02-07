@@ -32,10 +32,8 @@
 <div
   id="{{ index }}"
   class="pb-row pb-row-medias {{ classname }}{% if overlap %} --overlap-{{ overlap }} --{{ overlap_type }}{% endif %}"
-  {% if layout in ['slider', 'ticker', 'grid'] %}
-  data-scroll
-  data-scroll-offset="100px,0"
-  {% endif %}
+  data-module="pb-row-medias"
+  data-pb-row-medias
   {{ attributes|join(' ') }}
 >
   <div class="pb-row-medias__grid d-grid grid-gap-{{ grid_gap }}{% if fullwidth %} --fullwidth{% endif %} align-items-center">
